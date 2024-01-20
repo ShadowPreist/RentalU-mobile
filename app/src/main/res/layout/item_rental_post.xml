@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/gradient_background">
+
+    <!-- Property Type -->
+    <TextView
+        android:id="@+id/propertyTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Property Type"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <!-- Bedroom Count -->
+    <TextView
+        android:id="@+id/bedroomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bedrooms: "
+        android:textStyle="italic"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Date Added -->
+    <TextView
+        android:id="@+id/dateAddedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Added: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Location -->
+    <TextView
+        android:id="@+id/locationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Price -->
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- FurniTypes -->
+    <TextView
+        android:id="@+id/furniTypesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Furniture Types: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/phoneNoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Remarks -->
+    <TextView
+        android:id="@+id/remarksTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remarks: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <!-- Reporter -->
+    <TextView
+        android:id="@+id/reporterTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Reporter: "
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF" />
+
+</LinearLayout>
