@@ -50,7 +50,7 @@
         android:id="@+id/priceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price: "
+        android:text="Price per month: "
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 

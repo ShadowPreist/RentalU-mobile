@@ -1,6 +1,8 @@
 package com.example.rentalu;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,12 +64,23 @@ public class login extends AppCompatActivity {
         int userId = dbHelper.getUserId(email, password); // Assume you have a method to get user_id
 
         if (userId != -1) {
+            saveUserDataToSharedPreferences(userId, email, password);
             navigateToView(userId);
         } else {
 
             Toast.makeText(login.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void saveUserDataToSharedPreferences(int userId, String email, String password) {
+        SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("user_id", userId);
+        editor.putString("user_email", email);
+        editor.putString("user_password", password);
+        editor.apply();
+    }
+
 
     private void navigateToView(int userId) {
         // Create an Intent to start the MainActivity or your home screen

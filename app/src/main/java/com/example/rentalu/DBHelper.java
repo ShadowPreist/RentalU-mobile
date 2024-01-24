@@ -306,6 +306,71 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean checkIfEmailExists(String mail) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM user_table WHERE email=?", new String[]{mail});
+        boolean emailExists = cursor.getCount() > 0;
+        cursor.close();
+        return emailExists;
+    }
+
+    public ArrayList<RentalPost> getPostsByUserId(int userId) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {
+                REF_ID,
+                USER_ID,
+                PROPERTY_TYPE,
+                BEDROOM,
+                DATE_ADDED,
+                LOCATION,
+                PRICE,
+                FURNI_TYPES,
+                PHONE_NO,
+                REMARKS,
+                REPORTER
+        };
+
+        String selection = USER_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(userId)};
+
+        Cursor cursor = db.query(
+                PROPERTY_TABLE,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        ArrayList<RentalPost> userPosts = new ArrayList<>();
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                RentalPost rentalPost = new RentalPost();
+                rentalPost.setRefId(cursor.getInt(0));
+                rentalPost.setUserId(cursor.getInt(1));
+                rentalPost.setPropertyType(cursor.getString(2));
+                rentalPost.setBedroom(cursor.getString(3));
+                rentalPost.setDateAdded(cursor.getString(4));
+                rentalPost.setLocation(cursor.getString(5));
+                rentalPost.setPrice(cursor.getString(6));
+                rentalPost.setFurniTypes(cursor.getString(7));
+                rentalPost.setPhoneNo(cursor.getString(8));
+                rentalPost.setRemarks(cursor.getString(9));
+                rentalPost.setReporter(cursor.getString(10));
+
+                userPosts.add(rentalPost);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        db.close();
+        return userPosts;
+    }
+
+
 
 
 }

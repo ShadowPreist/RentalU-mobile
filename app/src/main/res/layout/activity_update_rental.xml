@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="#F2F2F2"
     tools:context=".update_rental">
 
     <LinearLayout
@@ -13,6 +15,7 @@
         android:orientation="vertical"
         android:layout_marginTop="60dp">
 
+        <!-- Reference ID -->
         <EditText
             android:id="@+id/reference_id"
             android:layout_width="match_parent"
@@ -21,8 +24,10 @@
             android:inputType="text"
             android:textSize="20sp"
             android:focusable="false"
-            android:enabled="false" />
+            android:enabled="false"
+            android:backgroundTint="#2196F3" />
 
+        <!-- User ID -->
         <EditText
             android:id="@+id/user_id"
             android:layout_width="match_parent"
@@ -31,7 +36,8 @@
             android:inputType="text"
             android:textSize="20sp"
             android:focusable="false"
-            android:enabled="false" />
+            android:enabled="false"
+            android:backgroundTint="#2196F3" />
 
         <EditText
             android:id="@+id/property_type"
@@ -39,7 +45,8 @@
             android:layout_height="wrap_content"
             android:hint="Property Type"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/bedroom"
@@ -47,7 +54,8 @@
             android:layout_height="wrap_content"
             android:hint="Bedroom"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/location"
@@ -55,7 +63,8 @@
             android:layout_height="wrap_content"
             android:hint="Location"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/price"
@@ -63,7 +72,8 @@
             android:layout_height="wrap_content"
             android:hint="Price"
             android:inputType="numberDecimal"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/furniture_type"
@@ -71,7 +81,8 @@
             android:layout_height="wrap_content"
             android:hint="Furniture Type"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/contact"
@@ -79,7 +90,8 @@
             android:layout_height="wrap_content"
             android:hint="Contact"
             android:inputType="phone"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/remarks"
@@ -87,7 +99,8 @@
             android:layout_height="wrap_content"
             android:hint="Remarks"
             android:inputType="textMultiLine"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <EditText
             android:id="@+id/reporter"
@@ -95,7 +108,8 @@
             android:layout_height="wrap_content"
             android:hint="Reporter"
             android:inputType="text"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:backgroundTint="#2196F3"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,19 +117,28 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="30dp">
+
             <Button
                 android:id="@+id/edit_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
                 android:text="Edit"
-                android:layout_marginRight="10dp"/>
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2196F3"
+                android:layout_marginEnd="10dp" />
+
             <Button
                 android:id="@+id/delete_btn"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Delete" />
+                android:layout_weight="1"
+                android:text="Delete"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF4081" />
+
         </LinearLayout>
 
 

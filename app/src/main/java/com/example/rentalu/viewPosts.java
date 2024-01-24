@@ -9,12 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
@@ -41,10 +44,31 @@ public class viewPosts extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_posts);
 
+        SharedPreferences preferences = getSharedPreferences("user_data", MODE_PRIVATE);
+
+
         Intent intent = getIntent();
-        loggedInUserId = intent.getIntExtra("user_id", -1);
+        loggedInUserId = preferences.getInt("user_id", -1);
+
 
         rentalList = getAllRentalPosts();
+        ToggleButton toggleButton = findViewById(R.id.toggleButton);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // ToggleButton is checked (My Posts)
+                    // Update the RecyclerView to show only posts created by the current user
+                    ArrayList<RentalPost> myPosts = dbHelper.getPostsByUserId(loggedInUserId);
+                    rentalAdapter.updateData(myPosts);
+                } else {
+                    // ToggleButton is unchecked (All Posts)
+                    // Update the RecyclerView to show all posts
+                    ArrayList<RentalPost> allPosts = dbHelper.getAllRentalPosts();
+                    rentalAdapter.updateData(allPosts);
+                }
+            }
+        });
 
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -71,6 +95,10 @@ public class viewPosts extends AppCompatActivity {
                     startActivity(intent);
                 } else if (itemId == R.id.menu_logout) {
                     // Handle log out click
+                    SharedPreferences preferences = getSharedPreferences("user_data", login.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
                     startActivity(new Intent(viewPosts.this, login.class));
                 }
 
@@ -114,6 +142,8 @@ public class viewPosts extends AppCompatActivity {
     private void setNavigationHeader() {
         // Set up the navigation header
         View headerView = navigationView.getHeaderView(0);
+        SharedPreferences preferences = getSharedPreferences("user_data", login.MODE_PRIVATE);
+
         TextView userNameTextView = headerView.findViewById(R.id.user_name);
         TextView userEmailTextView = headerView.findViewById(R.id.user_email);
 
